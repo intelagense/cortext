@@ -1,0 +1,147 @@
+:root {
+    --white: #eeeeee;
+    --light: #999999;
+    --medium: #666666;
+    --dark: #333333;
+    --darker: #282828;
+    --black: #111111;
+    --yellow: #fabd2f;
+    --darkYellow: #d79921;
+    --green: #b8bb26;
+}
+
+
+*{
+    font-family: 'Ubuntu Mono', monospace;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--black);
+}
+
+main {
+    overflow: auto;
+    position: absolute;
+    width: 800px;
+    max-width: 80%;
+    min-height: 640px;
+    max-height: 80%;
+    background-color: var(--dark);
+    padding: 10px;
+    border: 1px outset var(--darker);
+    border-radius: 1px;
+    box-shadow: 5px 5px 5px 2px rgb(0, 0, 0, .9);
+}
+main div{
+    margin: 100px;
+}
+#buttonBox{
+    text-align: center;
+}
+
+p{
+    color: var(--yellow);
+}
+button{
+    background: var(--medium);
+    color: var(--yellow);
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px;
+    min-width: 44px;
+}
+.stars{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    animation: animateBg 50s linear infinite;
+}
+/* star bodies */
+span{ 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* width: 4px; */
+    /* height: 4px; */
+    background: var(--white);
+    border-radius: 50%;
+    /* box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1), 0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 1)  ; */
+    animation:  animate 3s linear infinite;
+    
+    right: 0;
+}
+/* star tails */
+span::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--white), transparent);
+}
+
+@keyframes animate {
+    0%
+    {
+        transform: translateX(0);
+        opacity: 0;
+    }
+    50%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        transform: translateX(-1500px);
+        opacity: 0;
+    }
+}
+
+span:nth-child(1){
+    top: 16vh;
+    left:initial;
+    animation-delay: 1s;
+    animation-duration: 8s;
+}
+
+span:nth-child(2){
+    top: 32vh;
+    left:initial;
+    animation-delay:5s;
+    animation-duration: 9.6s;
+}
+
+span:nth-child(3){
+    top: 48vh;
+    left:initial;
+    animation-delay: 3s ;
+    animation-duration: 9.3s;
+}
+
+span:nth-child(4){
+    top: 64vh;
+    left:initial;
+    animation-delay:4s;
+    animation-duration: 9s;
+}
+
+span:nth-child(5){
+    top: 80vh;
+    left:initial;
+    animation-delay: 2s;
+    animation-duration: 8s;
+}
+
+/* Star animation modified from https://codesandbox.io/s/w96ut */
