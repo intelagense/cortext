@@ -1,7 +1,57 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, /*em,*/ img, ins, kbd, q, s, samp,
+small, strike, /*strong,*/ sub, sup, tt, var, /*
+b, u, i,*/ center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
 :root {
     --white: #eeeeee;
     --light: #999999;
-    --medium: #666666;
+    --medium: #444444;
     --dark: #333333;
     --darker: #282828;
     --black: #111111;
@@ -14,6 +64,7 @@
 *{
     font-family: 'Ubuntu Mono', monospace;
     box-sizing: border-box;
+    color: var(--yellow)
 }
 
 body {
@@ -29,6 +80,7 @@ body {
 }
 
 main {
+    
     overflow: auto;
     position: absolute;
     width: 800px;
@@ -40,10 +92,21 @@ main {
     border: 1px outset var(--darker);
     border-radius: 1px;
     box-shadow: 5px 5px 5px 2px rgb(0, 0, 0, .9);
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-content: space-around;
 }
-main div{
-    margin: 100px;
+#imgBox{
+    flex-basis: 50%;
 }
+
+#textBox{
+    text-align: left;
+    padding: 50px;
+}
+
 #buttonBox{
     text-align: center;
 }
@@ -52,6 +115,7 @@ p{
     color: var(--yellow);
 }
 button{
+    margin: 5px;
     background: var(--medium);
     color: var(--yellow);
     border-radius: 5px;
@@ -59,6 +123,18 @@ button{
     padding: 10px;
     min-width: 44px;
 }
+button:hover{
+    background: radial-gradient( var(--medium) 25%, var(--dark));
+    
+}
+img{
+    height:200px;
+    width:200px;
+    filter: brightness(50%) sepia(100%) contrast(200%);
+}
+
+
+@media only screen and (min-width: 600px) {
 .stars{
     position: absolute;
     top: 0;
@@ -143,5 +219,31 @@ span:nth-child(5){
     animation-delay: 2s;
     animation-duration: 8s;
 }
+}
+@media only screen and (max-width: 600px) {
+    
+    #textBox {
+        padding: 5px;
+    }
+    main{
+        max-width: 95%;
+        width: 95%; 
+        padding: 0;
+        box-shadow: none;
+    }
+    button{
+        padding: 10px;
+    }
+}
 
+body.wpex-is-mobile-device .wpb_animate_when_almost_visible {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-animation: none;
+    -moz-animation: none;
+    -o-animation: none;
+    animation: none;
+}
+
+/* CSS Mentions */
 /* Star animation modified from https://codesandbox.io/s/w96ut */
