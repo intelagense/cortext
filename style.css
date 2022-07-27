@@ -103,8 +103,13 @@ main {
 }
 
 #textBox{
+    align-self: center;
     text-align: left;
     padding: 50px;
+}
+#textBox h2{
+    font-size: 2em;
+    text-align: center;
 }
 
 #buttonBox{
@@ -136,8 +141,16 @@ img{
     object-fit: cover; 
     object-position: 0 -38px;
     outline: inset 2px;
-    
     outline-offset: -2px;
+}
+.clear{
+    outline: inset 2px;
+    outline-offset: -2px;
+}
+.shift{
+    outline: inset 2px;
+    outline-offset: -2px;
+    filter: grayscale(.8);
 }
 
 .neutral{
@@ -148,6 +161,10 @@ img{
 }
 .mad{
     filter:  brightness(33%) sepia(100%) contrast(200%) hue-rotate(300deg);
+}
+.angry{
+    transform: scale(125%);
+    
 }
 
 @media only screen and (min-width: 600px) {
