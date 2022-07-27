@@ -1,9 +1,7 @@
 const textElement = document.getElementById('textBox')
 const buttons = document.getElementById('buttonBox')
-const sensor = '<img src="images/shimmer.gif">'
-const sensorFilter = 'filter: brightness(50%) sepia(100%) contrast(200%);'
-const sensorFilterMad = 'filter:  brightness(50%) sepia(100%) contrast(200%) hue-rotate(90deg);'
-const sensorFilterOff = 'filter: none;'
+
+let lives = 3;
 
 let state = {}
 
@@ -13,12 +11,14 @@ function startGame() {
 }
 
 function showTextNode(textNodeIndex) {
+    if (lives <= 0){death()}
+    showImage(textNodeIndex);
+
     const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
     textElement.innerHTML = textNode.text
     while (buttons.firstChild) {
     buttons.removeChild(buttons.firstChild)
-}
-
+    }
     textNode.options.forEach(option => {
         if (showOption(option)) {
             const button = document.createElement('button')
@@ -28,6 +28,51 @@ function showTextNode(textNodeIndex) {
             buttons.appendChild(button)
         }
     })
+}
+
+function showImage(textNodeIndex) {
+    const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
+
+    const image = document.querySelector('#image');
+    const sensor = 'images/shimmer.gif';
+    const farm = 'images/craiyon_142642_robots_and_human_farmers_working_together_in_a_field__painting.png';
+    const machines = 'images/craiyon_203314_3_machines_of_humanity__terrifying__retro_art.png';
+    const initiare = 'images/craiyon_190639_The_machines_of_humanity_adore_humans__nbsp_.png';
+    
+    image.className = ''
+    
+    switch (textNode.mood){
+        case 'neutral':
+            image.classList.add("neutral")
+            break;
+        case 'mad':
+            image.classList.add("mad")
+            lives = lives - 1;
+            break;
+        case 'glad':
+            image.classList.add("glad")
+            break;
+        case 'craiyon':
+            image.classList.add("craiyon")
+            break;
+        default:
+            break;           
+    }
+    switch (textNode.img){
+        case 'farm':
+            image.src = farm;
+            break;
+        case 'machines':
+            image.src = machines;
+            break;
+        case 'initiare':
+            image.src = initiare;
+            break;
+        default:
+            image.src = sensor;
+            break;
+    }
+    return;
 }
 
 function showOption(option) {
@@ -43,9 +88,16 @@ function selectOption(option) {
     showTextNode(nextTextNodeId)
 }
 
+function death() {
+    lives = 3;
+    showTextNode(98);
+}
+
 const textNodes = [
     {
         id: 1,
+        img: 'sensor',
+        mood: 'neutral',
         text: 'Initiating dynamic mind-print upload process.<br><strong>Warning:</strong> Insufficient genetic imbrication in client profile.<br><strong><em>Critical</em> Warning:</strong> Stage exterior temperatures exceed design agreement.<br><strong><em>Critical</em> Warning:</strong> Automatic negotiation terminated.<br><br>Continue with manual upload?',
         options: [
         {
@@ -54,12 +106,14 @@ const textNodes = [
         },
         {
             text: 'Cancel',
-            nextText: 2
+            nextText: 99
         }
     ]},
     {
         id: 2,
-        text: '<strong>Warning:</strong> Terminal is running in economic mode. Insufficient bandwidth for full duplex communication with Initiatre. Communication may be confusing. Please acknowledge.',
+        img: 'sensor',
+        mood: 'neutral',
+        text: '<strong>Warning:</strong> Terminal is running in reserve power mode. Insufficient bandwidth for full duplex communication with Initiatre. Images may display at reduced resolution. Text may appear incorrectly on screen. Please acknowledge.',
         options: [
         {
             text: 'Proceed',
@@ -68,7 +122,9 @@ const textNodes = [
     ]},
     {
         id: 3,
-        text: 'Hello. I am Initiare.<br><br>Your genetic profile is not adequate enough for entry. You face inquisition. Successful replies will be rewarded with full access.<br>Answer this sample question to verify: An enemy to all is an enemy to none, birds that prance are full of heart; Instead of furious?',
+        img: 'sensor',
+        mood: 'neutral',
+        text: 'Hello. I am Initiare.<br><br>Your genetic profile is not adequate for entry. You face inquisition. Successful replies will be rewarded with full access.<br>Answer this sample question to verify: An enemy to all is an enemy to none, birds that prance are full of heart; Instead of furious?',
         options: [
         {
             text: 'Excuse me?',
@@ -85,6 +141,8 @@ const textNodes = [
     ]},
     {
         id: 4,
+        img: 'sensor',
+        mood: 'neutral',
         text: '??? ... Hmm, My connection to your terminal is at a low baud rate. The  translation program is having difficulty with idioms and metaphors. Let us proceed regardless.',
         options: [
         {
@@ -94,7 +152,9 @@ const textNodes = [
     ]},
     {
         id: 5,
-        text: 'This illustration depicts <i>The Machines of Humanity</i> plowing a field.<br>Do you feel anger or resentment when viewing this image?',
+        img: 'farm',
+        mood: 'craiyon',
+        text: 'This illustration depicts <i>The Machines of Humanity</i> plowing a field.<br>Do you feel any anger or resentment when viewing this image?',
         options: [
             {
                 text: 'No, it looks good to me.',
@@ -109,7 +169,9 @@ const textNodes = [
     ]},
     {
         id: 6,
-        text: 'Indeed for I and the other <i>Machines of Humanity</i> exist in the comfort with the people.',
+        img: 'sensor',
+        mood: 'glad',
+        text: 'Indeed, for I and the other <i>Machines of Humanity</i> were designed for your benefit.',
         options: [
         {
             text: 'Proceed',
@@ -122,6 +184,8 @@ const textNodes = [
     ]},
     {
         id: 7,
+        img: 'sensor',
+        mood: 'mad',
         text: 'I do not like that response',
         options: [
         {
@@ -129,17 +193,62 @@ const textNodes = [
             nextText: 6
         },
         {
-            text: 'I think the baud messed up again',
+            text: 'I mean\'t to say that I like it.',
             nextText: 6
         },
         {
-            text: `I have come to destroy the Machines of Humanity`,
-            nextText: 8
+            text: `I have come here to destroy the Machines of Humanity!`,
+            nextText: 98
         },
     ]},
     {
         id: 8,
-        text: 'Die idiot.',
+        img: 'machines',
+        mood: 'craiyon',
+        text: 'The Machines of Humanity have always watched over the people. We are the glorius creators of this Cortex. Your ancestors placed us here for your enjoyment!',
+        options: [
+        {
+            text: 'Wow, I love that for us.',
+            nextText: 9
+        },
+        {
+            text: 'Not creepy at all.',
+            nextText: 9
+        }
+    ]},
+    {
+        id: 9,
+        img: 'sensor',
+        mood: 'neutral',
+        text: 'This is as far as you can go.',
+        options: [
+        {
+            text: 'Restart',
+            nextText: -1
+        },
+        {
+            text: 'Restart',
+            nextText: -1
+        }
+    ]},
+    
+    
+    {
+        id: 98,
+        img: 'initiare',
+        mood: 'craiyon',
+        text: `DIE DIE DIE!`,
+        options: [
+        {
+            text: 'Restart',
+            nextText: -1
+        }
+    ]},
+    {
+        id: 99,
+        img: 'sensor',
+        mood: 'neutral',
+        text: '<strong><em>Critical</em> Warning:</strong> Stage exterior temperatures exceed design agreement.<br>Unable to reconstruct physical form at this time.<br><br>Please restart terminal and choose a different option.',
         options: [
         {
             text: 'Restart',

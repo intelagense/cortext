@@ -124,15 +124,31 @@ button{
     min-width: 44px;
 }
 button:hover{
-    background: radial-gradient( var(--medium) 25%, var(--dark));
-    
+    background: radial-gradient( var(--medium) 67%, var(--dark));
 }
+
 img{
     height:200px;
     width:200px;
-    filter: brightness(50%) sepia(100%) contrast(200%);
 }
 
+.craiyon{
+    object-fit: cover; 
+    object-position: 0 -38px;
+    outline: inset 2px;
+    
+    outline-offset: -2px;
+}
+
+.neutral{
+    filter: brightness(50%) sepia(100%) contrast(200%);
+}
+.glad{
+    filter:  brightness(50%) sepia(100%) contrast(200%) hue-rotate(90deg);
+}
+.mad{
+    filter:  brightness(33%) sepia(100%) contrast(200%) hue-rotate(300deg);
+}
 
 @media only screen and (min-width: 600px) {
 .stars{
@@ -225,10 +241,20 @@ span:nth-child(5){
     #textBox {
         padding: 5px;
     }
+    #imgBox{
+        flex-basis: 1;
+        
+        padding-top: 10%;
+    }
+    body{
+        margin-top: 0;
+        display: block;
+    }
     main{
-        max-width: 95%;
-        width: 95%; 
-        padding: 0;
+        max-width: 100%;
+        width: 100%; 
+        height: calc(100vh - env(safe-area-inset-bottom));
+        padding: 10px;
         box-shadow: none;
     }
     button{
