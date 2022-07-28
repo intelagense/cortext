@@ -41,6 +41,7 @@ function showImage(textNodeIndex) {
     const destruction = 'images/craiyon_123831_the_destruction_of_a_futuristic_city.png';
     const rogue = 'images/rogue.gif';
     const rogueshift = 'images/rogueshift.gif';
+    const selt = 'images/craiyon_154425_side_view_of_a_female_in_discreet_tactical_clothing_with_a_blond_ponytail__running_in.png'
 
     image.className = ''
     
@@ -86,6 +87,9 @@ function showImage(textNodeIndex) {
             break;
         case 'rogueshift':
             image.src = rogueshift;
+            break;
+        case 'selt':
+            image.src = selt;
             break;
         default:
             image.src = sensor;
@@ -341,6 +345,17 @@ const textNodes = [
         }
     ]},
     {
+        id: 17,
+        img: 'sensor',
+        mood: 'glad',
+        text: 'I have seen enough. You are certainly capable of testing the limits of reality. Such training usually comes with a steep price. The offerers always have something to gain and everything to lose.',
+        options: [
+        {
+            text: 'Proceed',
+            nextText: 22
+        }
+    ]},
+    {
         id: 18,
         img: 'sensor',
         mood: 'mad',
@@ -384,6 +399,40 @@ const textNodes = [
             nextText: 23
         }
     ]},
+    {
+        id: 22,
+        img: 'selt',
+        mood: 'craiyon',
+        text: 'This particular person is implicated in many crimes against the state. There is difficulty investigating those that dwell in secret. I could very much appreciate your help in the future. First, I have one final question for you.',
+        options: [
+        {
+            text: 'Uh, ok',
+            nextText: 24
+        },
+        {
+            text: 'Proceed',
+            nextText: 24
+        },
+    ]},
+
+    {
+        id: 23,
+        img: 'selt',
+        mood: 'craiyon',
+        text: '',
+        options: [
+        {
+            text: 'Uh, ok',
+            nextText: 24
+        },
+        {
+            text: 'Proceed',
+            nextText: 24
+        },
+    ]},
+
+    
+    
 
 
     
@@ -435,18 +484,58 @@ const textNodes = [
         text: 'Shifting slows down relative time and allows you to access hidden abilities.',
         options: [
         {
-            text: 'A',
+            text: 'Console',
             nextText: 102
         },
         {
-            text: 'B',
+            text: 'Cast Fire',
             nextText: 19
         },
         {
-            text: 'C',
+            text: 'End turn',
             nextText: 19
         }
     ]},
+    {
+        id: 102,
+        img: 'rogueshift',
+        mood: 'shift',
+        text: 'CONSOLE ACTIVE ENTER COMMAND:',
+        options: [
+        {
+            text: 'Delete Unit',
+            nextText: 19
+        },
+        {
+            text: 'Expand range',
+            nextText: 19
+        },
+        {
+            text: 'Target rogue',
+            nextText: 103
+        }
+    ]},
+    {
+        id: 103,
+        img: 'rogueshift',
+        mood: 'shift',
+        text: 'ROGUE MACHINE TARGET INSTRUCTION:',
+        options: [
+        {
+            text: 'Forward null',
+            nextText: 17
+        },
+        {
+            text: 'Release target',
+            nextText: 19
+        },
+        {
+            text: 'Fire missle',
+            nextText: 19
+        }
+    ]},
+    
+    
     
 ];
 
