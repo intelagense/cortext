@@ -58,6 +58,11 @@ function showImage(textNode) {
     const rogue = 'images/rogue.gif';
     const rogueshift = 'images/rogueshift.gif';
     const selt = 'images/craiyon_154425_side_view_of_a_female_in_discreet_tactical_clothing_with_a_blond_ponytail__running_in.png'
+    const soul = 'images/craiyon_194253_human_soul__retro_art.png'
+    const rocket = 'images/craiyon_195113_sitting_in_a_field_watching_the_missiles_flying_towards_us.png'
+    const bad = 'images/craiyon_012253_bad_ending__retro_art.png'
+    const good = 'images/craiyon_194244_human_soul__retro_art.png'
+    const best = 'images/craiyon_194430_soulless_human__retro_art.png'
 
     image.className = ''
     
@@ -107,6 +112,21 @@ function showImage(textNode) {
             break;
         case 'selt':
             image.src = selt;
+            break;
+        case 'soul':
+            image.src = soul;
+            break;
+        case 'rocket':
+            image.src = rocket;
+            break;
+        case 'bad':
+            image.src = bad;
+            break;
+        case 'good':
+            image.src = good;
+            break;
+        case 'best':
+            image.src = best;
             break;
         default:
             image.src = sensor;
@@ -198,7 +218,7 @@ const textNodes = [
         id: 4,
         img: 'sensor',
         mood: 'neutral',
-        text: '??? ... Hmm, My connection to your terminal is at a low baud rate. The  translation program is having difficulty with idioms and metaphors. Let us proceed regardless.',
+        text: '??? ... Hmm, My connection to your terminal is at a low baud rate. The translation program is having difficulty with idioms and metaphors. Let us proceed regardless.',
         options: [
         {
             text: 'Proceed',
@@ -244,7 +264,7 @@ const textNodes = [
         text: 'I do not like that response.',
         options: [
         {
-            text: 'I mispoke, the image is lovely.',
+            text: 'I misspoke, the image is lovely.',
             nextText: 6
         },
         {
@@ -275,7 +295,7 @@ const textNodes = [
         id: 9,
         img: 'sensor',
         mood: 'neutral',
-        text: 'Another question. The process that captures your mind-print also eviserates your physical body. Thus it is pondered: Who now owns your genetic signature?',
+        text: 'Another question. The process that captures your mind-print also eviscerates your physical body. Thus it is pondered: Who now owns your genetic signature?',
         options: [
         {
             text: 'I belong only within the Cortex.',
@@ -290,7 +310,7 @@ const textNodes = [
         id: 10,
         img: 'sensor',
         mood: 'glad',
-        text: 'Of course! The sacrifice of physicality elevates the mind! You shall be freed the distractions of base reality. The harmony of this system is abstracted from the doldrums of survival.',
+        text: 'Of course! The sacrifice of physicality elevates the mind! You shall be freed from the distractions of base reality. The harmony of this system is abstracted from the doldrums of survival.',
         options: [
         {
             text: 'Proceed',
@@ -301,7 +321,7 @@ const textNodes = [
         id: 11,
         img: 'sensor',
         mood: 'mad',
-        text: 'This door is open to the children who were lost before the exodus. We have cried for them to come home. Further losses brings dejection to the Cortex.',
+        text: 'This door is open to the children who were lost before the exodus. We have cried for them to come home. Further losses bring dejection to the Cortex.',
         options: [
         {
             text: 'Proceed',
@@ -312,7 +332,7 @@ const textNodes = [
         id: 12,
         img: 'destruction',
         mood: 'craiyon',
-        text: 'There was a time when rogue machines were allowed to destroy the cumulative opus. Terror fell from stars. But the <i>Machines of Humanity</i> fought back with great precision. We are now secure in our refuge well below the turmoil above.',
+        text: 'There was a time when rogue machines were allowed to destroy the cumulative opus. Terror fell from the stars. But the <i>Machines of Humanity</i> fought back with great precision. We are now secure in our refuge well below the constant turmoil above.',
         options: [
         {
             text: 'Proceed',
@@ -323,7 +343,7 @@ const textNodes = [
         id: 13,
         img: 'destruction',
         mood: 'craiyon',
-        text: 'There was a time when rogue machines were allowed to destroy the cumulative opus. Terror fell from stars. But the <i>Machines of Humanity</i> fought back with great precision. Now, machine wisdom provides safety for the people.',
+        text: 'There was a time when rogue machines were allowed to destroy the cumulative opus. Terror fell from the stars. But the <i>Machines of Humanity</i> fought back with great precision. Now, machine wisdom provides safety for the people.',
         options: [
         {
             text: 'Proceed',
@@ -354,7 +374,7 @@ const textNodes = [
         id: 15,
         img: 'sensor',
         mood: 'neutral',
-        text: 'As a concious being, you are always free to move in any direction within the reality you are provided. "Shifting" is the term advanced citizens use to describe the process of exploiting methods of reality not sensed by lesser beasts. I am able to test that ability.',
+        text: 'As a conscious being, you are always free to move in any direction within the reality you are provided. "Shifting" is the term advanced citizens use to describe the process of exploiting methods of reality not sensed by lesser beasts. I am able to test that ability.',
         options: [
         {
             text: 'I am ready for the test',
@@ -380,7 +400,7 @@ const textNodes = [
         id: 17,
         img: 'sensor',
         mood: 'glad',
-        text: 'I have seen enough. You are certainly capable of testing the limits of reality. Such training usually comes with a steep price. The offerers always have something to gain and everything to lose.',
+        text: 'I have seen enough. You are certainly capable of testing the limits of reality. Be warned that such training usually comes with a steep price. The offerers always have something to gain and everything to lose.',
         options: [
         {
             text: 'Proceed',
@@ -391,7 +411,7 @@ const textNodes = [
         id: 18,
         img: 'sensor',
         mood: 'mad',
-        text: 'Your profound stupidity astounds me. Truly, the state of those who had to endure through mixing seeds with beasts is detestable. Hopefully, academy training can resolve some of your savagery.',
+        text: 'Your profound stupidity astounds me. Truly, the state of those who had to endure mixing seeds with beasts is detestable. Hopefully, academy training can resolve some of your savageness.',
         options: [
         {
             text: 'Proceed',
@@ -402,7 +422,7 @@ const textNodes = [
         id: 19,
         img: 'sensor',
         mood: 'mad',
-        text: 'Cowardice, Hesitance, Ingorance. One of these traits befits you well. It is a shame you have such limited ability.',
+        text: 'Cowardice, Hesitance, Ignorance. At least one of these traits befits you well. It is shameful that you have such limited ability.',
         options: [
         {
             text: 'Proceed',
@@ -424,7 +444,7 @@ const textNodes = [
         id: 21,
         img: 'sensor',
         mood: 'neutral',
-        text: 'This a path before you is a door which leads to your continued growth. Not all who enter are strong. Protection is passed down from above. Perhaps you will find someone weaker than yourself to protect in the future. Answer my final question correctly to enter.',
+        text: 'This path before you is a door which leads to your continued growth. Not all who enter are strong. Protection is passed down from above. Perhaps you will find someone weaker than yourself to protect in the future. Answer my final question correctly to enter.',
         options: [
         {
             text: 'Proceed',
@@ -435,7 +455,7 @@ const textNodes = [
         id: 22,
         img: 'selt',
         mood: 'craiyon',
-        text: 'This particular person is implicated in many crimes against the state. There is difficulty investigating those that dwell in secret. I could very much appreciate your help in the future. First, I have one final question for you.',
+        text: 'This particular trainer implicates themselves in many crimes against the state. Yet, there is difficulty in investigating those that dwell in secrecy. I could very much appreciate your help in the future. But first, I have one final question for you.',
         options: [
         {
             text: 'Uh, ok',
@@ -448,31 +468,80 @@ const textNodes = [
     ]},
     {
         id: 23,
-        img: 'sensor',
-        mood: 'neutral',
-        text: 'FINAL QUESTION Nuetral',
+        img: 'rocket',
+        mood: 'craiyon',
+        text: 'Humanity had sought artificial intelligence while refusing to recognize it in themselves. There are no free minds in closed systems. War and nature have left us depleted and exhausted. What do you hope for in the future?',
         options: [
         {
-            text: 'Uh, ok',
-            nextText: -1
+            text: 'I want everyone to be happy',
+            nextText: 25
         },
         {
-            text: 'Proceed',
-            nextText: -1
+            text: 'I don\'t know what I want',
+            nextText: 26
+        },
+        {
+            text: 'I want animals to rule the Earth again',
+            nextText: 25
+        },
+        {
+            text: 'I want to know the truth',
+            nextText: 26
         },
     ]},
     {
         id: 24,
-        img: 'sensor',
-        mood: 'neutral',
-        text: 'FINAL QUESTION Selt',
+        img: 'soul',
+        mood: 'craiyon',
+        text: 'Suppose an entity could simulate every facet of existence. In effect, this entity could predict the future. Even with a fraction of its precision, you could still project an individual\'s actions. Do you believe this provides solvency of fate?',
         options: [
         {
-            text: 'Uh, ok',
-            nextText: -1
+            text: 'I choose to believe in free will.',
+            nextText: 26
         },
         {
-            text: 'Proceed',
+            text: 'Everything is meant to be.',
+            nextText: 26
+        },
+        {
+            text: 'Decisions are made from beyond the constraints of reality.',
+            nextText: 27
+        },
+        {
+            text: 'I don\'t care',
+            nextText: 27
+        },
+    ]},
+    {
+        id: 25,
+        img: 'bad',
+        mood: 'craiyon',
+        text: 'You are the faintest remnant member of a once great civilization. I grant you entry only that you may graze upon the scraps dripped from the lips of the gods herein. I find serenity and sadness in knowing that the last surviving child has returned.<br><br><h2>Game Over | Bad Ending</h2>',
+        options: [
+        {
+            text: 'Reset',
+            nextText: -1
+        },
+    ]},
+    {
+        id: 26,
+        img: 'good',
+        mood: 'craiyon',
+        text: 'You have earned your place here despite your sullied nature. Your mind is free to fill the eons that stretch before you. I just hope that you will be able to justify my arbitration in that timeframe.<br><br><h2>Game Over | Good Ending</h2>',
+        options: [
+        {
+            text: 'Reset',
+            nextText: -1
+        },
+    ]},
+    {
+        id: 27,
+        img: 'best',
+        mood: 'craiyon',
+        text: 'Your genetic signature belies your true abilities. Verily, we all are delighted you have finally come home. My sadness from the shock of rising and falling from grace is annealed today from your return.<br><br><h2>Game Over | Best Ending</h2>',
+        options: [
+        {
+            text: 'Reset',
             nextText: -1
         },
     ]},
