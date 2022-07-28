@@ -124,44 +124,57 @@ function showImage(textNode) {
     switch (textNode.img){
         case 'farm':
             image.src = farm;
+            image.alt = "crude painting of machines working on a farm";
             break;
         case 'machines':
             image.src = machines;
+            image.alt = "creepy imagine of smiling machines";
             break;
         case 'initiare':
             image.src = initiare;
-            image.classList.add("angry")
+            image.alt = "disturbing robot face";
+            // image.classList.add("angry")
             break;
         case 'destruction':
             image.src = destruction;
+            image.alt = "a city under attack";
             break;
         case 'rogue':
             image.src = rogue;
+            image.alt = "pixelated robot walking animation"
             audio.src = track2;
             break;
         case 'rogueshift':
             image.src = rogueshift;
+            image.alt = "pixelated robot walking animation - slowed down"
             break;
         case 'selt':
             image.src = selt;
+            image.alt = "distorted camera footage of a young female in tactical armor running" 
             break;
         case 'soul':
             image.src = soul;
+            image.alt = "AI generated painting of a human with no soul"
             break;
         case 'rocket':
             image.src = rocket;
+            image.alt = "a rocket or missile blasting off in a field while a person sits close by and watches"
             break;
         case 'bad':
             image.src = bad;
+            image.alt = "a destitute looking couple"
             break;
         case 'good':
             image.src = good;
+            image.alt = "a humanoid figure surrounded by rings, painting"
             break;
         case 'best':
             image.src = best;
+            image.alt = "a metalic humanoid statue"
             break;
         default:
             image.src = sensor;
+            image.alt = "lensless imaging sensor, flashing"
             break;
     }
 
@@ -262,7 +275,7 @@ const textNodes = [
         id: 5,
         img: 'farm',
         mood: 'craiyon',
-        text: 'This illustration depicts <i>The Machines of Humanity</i> plowing a field.<br>Do you feel any anger or resentment when viewing this image?',
+        text: 'This illustration depicts the <i>Machines of Humanity</i> plowing a field.<br>Do you feel any anger or resentment when viewing this image?',
         options: [
             {
                 text: 'No, it looks good to me.',

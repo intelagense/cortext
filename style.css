@@ -85,7 +85,7 @@ main {
     position: absolute;
     width: 800px;
     max-width: 80%;
-    min-height: 640px;
+    /* min-height: 240px; */
     max-height: 80%;
     background-color: var(--dark);
     padding: 10px;
@@ -99,9 +99,10 @@ main {
     justify-content: space-around;
 }
 #playbutton{
+    font-size: 24px;
     position: absolute;
-    bottom: 5%;
-    right: 5%;    
+    bottom: 2.5%;
+    left: 2.5%;    
     filter: sepia(60%);
 }
 
@@ -272,6 +273,10 @@ span:nth-child(5){
         
         padding-top: 10%;
     }
+    #playbutton{
+        font-size: 32px;
+    }
+    
     body{
         margin-top: 0;
         display: block;
