@@ -1,37 +1,45 @@
-const textElement = document.getElementById('textBox')
-const buttons = document.getElementById('buttonBox')
+const textElement = document.getElementById('textBox');
+const buttons = document.getElementById('buttonBox');
+const audio = document.getElementById('myaudio');
 
-let state = {
-    lives: 3
-}
+let state = {};
 
 function startGame() {
-    state = {}
-    showTextNode(1)
+    state = {
+        lives: 3,
+        play: 0
+    };
+    showTextNode(1);
 }
 
 function showTextNode(textNodeIndex) {
-    if (state.lives <= 0){death()}
-    showImage(textNodeIndex);
 
-    const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
+    let textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
+    
+    showImage(textNode);
+
+    if (state.lives <= 0) {
+        state.lives = 3;
+        textNode = textNodes.find(textNode => textNode.id === 98);
+        showImage(textNode);
+    }
+
+    
     textElement.innerHTML = textNode.text
     while (buttons.firstChild) {
     buttons.removeChild(buttons.firstChild)
     }
     textNode.options.forEach(option => {
-        if (showOption(option)) {
-            const button = document.createElement('button')
-            button.innerText = option.text
-            button.classList.add('btn')
-            button.addEventListener('click', () => selectOption(option))
-            buttons.appendChild(button)
-        }
+        const button = document.createElement('button')
+        button.innerText = option.text
+        button.classList.add('btn')
+        button.addEventListener('click', () => selectOption(option))
+        buttons.appendChild(button)
     })
+
 }
 
-function showImage(textNodeIndex) {
-    const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
+function showImage(textNode) {
 
     const image = document.querySelector('#image');
     const sensor = 'images/shimmer.gif';
@@ -51,7 +59,7 @@ function showImage(textNodeIndex) {
             break;
         case 'mad':
             image.classList.add("mad")
-            state.lives -= 1;
+            state.lives = (state.lives - 1);
             break;
         case 'glad':
             image.classList.add("glad")
@@ -95,26 +103,25 @@ function showImage(textNodeIndex) {
             image.src = sensor;
             break;
     }
+
     return;
 }
 
-function showOption(option) {
-    return option.requiredState == null || option.requiredState(state)
-}
-
 function selectOption(option) {
-    const nextTextNodeId = option.nextText
+    let nextTextNodeId = option.nextText
+
     if (nextTextNodeId <= 0) {
         return startGame()
     }
-    state = Object.assign(state, option.setState)
-    showTextNode(nextTextNodeId)
+    if (state.play === 0){
+        state.play = 1;
+        audio.play();
+        audio.volume = 0.05;
+    }
+    showTextNode(nextTextNodeId);
+    
 }
 
-function death() {
-    state.lives = 3;
-    showTextNode(98);
-}
 
 const textNodes = [
     {
@@ -209,7 +216,7 @@ const textNodes = [
         id: 7,
         img: 'sensor',
         mood: 'mad',
-        text: 'I do not like that response',
+        text: 'I do not like that response.',
         options: [
         {
             text: 'I mispoke, the image is lovely.',
@@ -291,7 +298,7 @@ const textNodes = [
         id: 13,
         img: 'destruction',
         mood: 'craiyon',
-        text: 'There was a time when rogue machines were allowed to destroy the cumulative opus. Terror fell from stars. But the <i>Machines of Humanity</i> fought back with great precision. Now, machine wisdom provides safety for it\'s people.',
+        text: 'There was a time when rogue machines were allowed to destroy the cumulative opus. Terror fell from stars. But the <i>Machines of Humanity</i> fought back with great precision. Now, machine wisdom provides safety for the people.',
         options: [
         {
             text: 'Proceed',
@@ -381,7 +388,7 @@ const textNodes = [
         id: 20,
         img: 'sensor',
         mood: 'neutral',
-        text: 'Though, you seem less naive than the last few who entered... Certain potential traitors prey upon the minds of the returning citizens. I would be willing to bestow some additional benefits to you if you can bring me some information on these heretics. Of course, you still have to pass the final test to enter.',
+        text: 'Although, you seem less naive than the last few who entered... Certain potential traitors prey upon the minds of the returning citizens. I would be willing to bestow some additional benefits to you if you can bring me some information on these heretics. Of course, you still have to pass the final test to enter.',
         options: [
         {
             text: 'Proceed',
@@ -414,27 +421,36 @@ const textNodes = [
             nextText: 24
         },
     ]},
-
     {
         id: 23,
-        img: 'selt',
-        mood: 'craiyon',
-        text: '',
+        img: 'sensor',
+        mood: 'neutral',
+        text: 'FINAL QUESTION Nuetral',
         options: [
         {
             text: 'Uh, ok',
-            nextText: 24
+            nextText: -1
         },
         {
             text: 'Proceed',
-            nextText: 24
+            nextText: -1
         },
     ]},
-
-    
-    
-
-
+    {
+        id: 24,
+        img: 'sensor',
+        mood: 'neutral',
+        text: 'FINAL QUESTION Selt',
+        options: [
+        {
+            text: 'Uh, ok',
+            nextText: -1
+        },
+        {
+            text: 'Proceed',
+            nextText: -1
+        },
+    ]},
     
     {
         id: 98,
