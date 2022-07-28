@@ -1,20 +1,28 @@
-const textElement = document.getElementById('textBox')
-const buttons = document.getElementById('buttonBox')
+const textElement = document.getElementById('textBox');
+const buttons = document.getElementById('buttonBox');
+const audio = document.getElementById('myaudio');
 
-let state = {
-    lives: 3
-}
+let state = {};
 
 function startGame() {
-    state = {}
-    showTextNode(1)
+    state = {
+        lives: 3,
+        play: 0
+    };
+    showTextNode(1);
 }
 
 function showTextNode(textNodeIndex) {
-    if (state.lives <= 0){death()}
+
+    let textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
+    if (state.lives <=2){
+        state.lives = 3;
+
+    }
+
+
     showImage(textNodeIndex);
 
-    const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
     textElement.innerHTML = textNode.text
     while (buttons.firstChild) {
     buttons.removeChild(buttons.firstChild)
@@ -28,6 +36,7 @@ function showTextNode(textNodeIndex) {
             buttons.appendChild(button)
         }
     })
+
 }
 
 function showImage(textNodeIndex) {
@@ -51,7 +60,7 @@ function showImage(textNodeIndex) {
             break;
         case 'mad':
             image.classList.add("mad")
-            state.lives -= 1;
+            state.lives = (state.lives - 1);
             break;
         case 'glad':
             image.classList.add("glad")
@@ -104,17 +113,22 @@ function showOption(option) {
 
 function selectOption(option) {
     const nextTextNodeId = option.nextText
+
     if (nextTextNodeId <= 0) {
         return startGame()
     }
+    if (state.play === 0){
+        state.play = 1;
+        audio.play();
+        audio.volume = 0.05;
+    }
+
     state = Object.assign(state, option.setState)
-    showTextNode(nextTextNodeId)
+    
+    showTextNode(nextTextNodeId);
+    
 }
 
-function death() {
-    state.lives = 3;
-    showTextNode(98);
-}
 
 const textNodes = [
     {
@@ -209,7 +223,7 @@ const textNodes = [
         id: 7,
         img: 'sensor',
         mood: 'mad',
-        text: 'I do not like that response',
+        text: 'I do not like that response.',
         options: [
         {
             text: 'I mispoke, the image is lovely.',
@@ -291,7 +305,7 @@ const textNodes = [
         id: 13,
         img: 'destruction',
         mood: 'craiyon',
-        text: 'There was a time when rogue machines were allowed to destroy the cumulative opus. Terror fell from stars. But the <i>Machines of Humanity</i> fought back with great precision. Now, machine wisdom provides safety for it\'s people.',
+        text: 'There was a time when rogue machines were allowed to destroy the cumulative opus. Terror fell from stars. But the <i>Machines of Humanity</i> fought back with great precision. Now, machine wisdom provides safety for the people.',
         options: [
         {
             text: 'Proceed',
