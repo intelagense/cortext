@@ -98,6 +98,14 @@ main {
     justify-content: space-between;
     justify-content: space-around;
 }
+#playbutton{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;    
+    filter: sepia(60%);
+}
+
+
 #imgBox{
     flex-basis: 50%;
 }

@@ -2,11 +2,43 @@ const textElement = document.getElementById('textBox');
 const buttons = document.getElementById('buttonBox');
 
 const audio = document.getElementById('myaudio');
+audio.volume = 0.05;
 const track1 = 'audio/unknown_space_ambience.mp3';
 const track2 = 'audio/biohazardsv3.ogg';
 const track3 = 'audio/biohazardsextended.ogg';
 const track4 = 'audio/unknown_space_bassed.mp3';
 let audioTest 
+
+let playButton = document.getElementById("playbutton");
+
+playButton.addEventListener("click", handlePlayButton, false);
+playAudio();
+
+async function playAudio() {
+    try {
+        await audio.play();
+        playButton.classList.add("playing");
+        audio.autoplay = true;
+        playButton.innerText='🔉'
+    } catch(err) {
+        playButton.classList.remove("playing");
+        audio.autoplay = false;
+        playButton.innerText='🔇';
+    }
+}
+
+function handlePlayButton() {
+    state.play = 1;
+    if (audio.paused) {
+        playAudio();
+    } else {
+        audio.pause();
+        playButton.classList.remove("playing");
+        audio.autoplay = false;
+        playButton.innerText='🔇';
+    }
+}
+
 
 let state = {};
 
@@ -159,7 +191,8 @@ function selectOption(option) {
 
     if (state.play === 0){
         state.play = 1;
-        audio.play();
+        // audio.play();
+        playAudio();
         audio.volume = 0.05;
         audioTest = audio.src;
     }
