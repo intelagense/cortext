@@ -1,14 +1,21 @@
 const textElement = document.getElementById('textBox');
 const buttons = document.getElementById('buttonBox');
+
 const audio = document.getElementById('myaudio');
+const track1 = 'audio/unknown_space_ambience.mp3';
+const track2 = 'audio/biohazardsv3.ogg';
+const track3 = 'audio/biohazardsextended.ogg';
+const track4 = 'audio/unknown_space_bassed.mp3';
+let audioTest 
 
 let state = {};
 
 function startGame() {
     state = {
         lives: 3,
-        play: 0
+        play: 0,
     };
+    audio.src = track1;
     showTextNode(1);
 }
 
@@ -22,6 +29,7 @@ function showTextNode(textNodeIndex) {
         state.lives = 3;
         textNode = textNodes.find(textNode => textNode.id === 98);
         showImage(textNode);
+        audio.src = track4;
     }
 
     
@@ -92,6 +100,7 @@ function showImage(textNode) {
             break;
         case 'rogue':
             image.src = rogue;
+            audio.src = track2;
             break;
         case 'rogueshift':
             image.src = rogueshift;
@@ -111,12 +120,28 @@ function selectOption(option) {
     let nextTextNodeId = option.nextText
 
     if (nextTextNodeId <= 0) {
+        audio.src = track1;
         return startGame()
+    }else if (nextTextNodeId === 101){
+        audio.src = track3;
+    }else if (nextTextNodeId === 19 ||
+        nextTextNodeId === 17) {
+        if (audio.src != audioTest){
+            audio.src = track1;
+        }
+    }else if (nextTextNodeId === 98 ||
+        nextTextNodeId === 25 ||
+        nextTextNodeId === 26 ||
+        nextTextNodeId === 27 ) {
+        audio.src = track4;
+        // audio.loop = false; current track ends too abruptly
     }
+
     if (state.play === 0){
         state.play = 1;
         audio.play();
         audio.volume = 0.05;
+        audioTest = audio.src;
     }
     showTextNode(nextTextNodeId);
     
@@ -370,7 +395,7 @@ const textNodes = [
         options: [
         {
             text: 'Proceed',
-            nextText: 15
+            nextText: 21
         }
     ]},
     {
