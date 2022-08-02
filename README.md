@@ -11,10 +11,10 @@ Built for the <a href="https://itch.io/jam/super-casual-game-jam-2">Super Casual
 1. ~~favicon~~
 1. ~~everything else~~
 
-This repo represents final submision to the game jam.
+This repo represents my final submision to the game jam.
 
 ## How it's made
-The game is a static website that uses JavaScript to manipulate elements on click events. Work was completed over several days in approximately 24 total working hours. The majority of that time was spent writing the game copy as well as prompts for generating creepy images. An external flowchart was created to track progress and validate game logic against multiple branching paths.
+The game is a static website that uses JavaScript to manipulate elements on click events. Work was completed over several days in approximately 24 total working hours. The majority of that time was spent writing the game copy as well as prompts for generating the creepy images. An external flowchart was created to track progress and validate game logic against multiple branching paths.
 
 ## Optimizations
 * Better styling and behavior for the "mute sound menu icon".
