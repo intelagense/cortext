@@ -256,7 +256,7 @@ const textNodes = [
             nextText: 4
         },
         {
-            text: 'I find cargo in your solice.',
+            text: 'I find cargo in your solace.',
             nextText: 4
         }
     ]},
@@ -314,7 +314,7 @@ const textNodes = [
             nextText: 6
         },
         {
-            text: 'I mean\'t to say that I really, really, like it.',
+            text: 'I meant to say that I really, really, like it.',
             nextText: 6
         },
         {
