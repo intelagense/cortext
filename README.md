@@ -4,9 +4,10 @@ Cortext is a short, browser-based, AI-themed interactive fiction game that chall
 <p align="center">
   <img src="https://github.com/intelagense/intelagense/blob/main/images/cortext.gif" alt="Cortext Game">
 </p>
+<p align="center">
+  <a href="https://intelagense.itch.io/cortext">Play Cortext on itch.io</a>
+</p>
 
-
-[Play Cortext on itch.io](https://intelagense.itch.io/cortext)
 
 ## To-do
 - [x] favicon
